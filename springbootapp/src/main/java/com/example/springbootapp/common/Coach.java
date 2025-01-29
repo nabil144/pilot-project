@@ -1,4 +1,4 @@
-package com.example.springbootapp;
+package com.example.springbootapp.common;
 
 public interface Coach {
 
