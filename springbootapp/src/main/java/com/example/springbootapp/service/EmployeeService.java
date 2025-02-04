@@ -1,10 +1,10 @@
-package com.example.springbootapp.dao;
+package com.example.springbootapp.service;
 
 import com.example.springbootapp.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
 
     List<Employee> findAll();
 
@@ -13,4 +13,5 @@ public interface EmployeeDAO {
     Employee save(Employee theEmployee);
 
     void deleteById(int theId);
+
 }
