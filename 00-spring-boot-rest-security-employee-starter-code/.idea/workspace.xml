@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1bfb3041-c7bb-482d-9d38-924fc840110a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql-scripts/05-setup-spring-security-demo-database-bcrypt.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql-scripts/05-setup-spring-security-demo-database-bcrypt.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql-scripts/06-setup-spring-security-demo-database-bcrypt-custom-table-names.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql-scripts/06-setup-spring-security-demo-database-bcrypt-custom-table-names.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/luv2code/springboot/cruddemo/security/DemoSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/luv2code/springboot/cruddemo/security/DemoSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/luv2code/springboot/cruddemo/security/DemoSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/luv2code/springboot/cruddemo/security/DemoSecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,17 +39,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CruddemoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cruddemo [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mira-branch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mira.hussein/workspace/pilot-project/springbootapp&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CruddemoApplication.executor": "Run",
+    "Maven.cruddemo [clean].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "mira-branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mira.hussein/workspace/pilot-project/springbootapp",
+    "settings.editor.selected.configurable": "project.propCompiler"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
