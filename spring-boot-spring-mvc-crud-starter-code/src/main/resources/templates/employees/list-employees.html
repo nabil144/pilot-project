@@ -24,6 +24,7 @@
               <th>first name</th>
               <th>last name</th>
               <th>email</th>
+              <th>action</th>
           </tr>
 
         </thead>
@@ -34,7 +35,19 @@
                 <td th:text="${tempEmployee.firstName}"/>
                 <td th:text="${tempEmployee.lastName}"/>
                 <td th:text="${tempEmployee.email}"/>
+                <td>
+                    <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"
+                        class="btn btn-info btn-sm">
+                        update
+                    </a>
 
+                    <a th:href="@{/employees/delete(employeeId=${tempEmployee.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('are u sure u want to delete this employee?'))) return false">
+                        delete
+                    </a>
+
+                </td>
             </tr>
         </tbody>
 
