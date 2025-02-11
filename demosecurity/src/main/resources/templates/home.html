@@ -23,17 +23,21 @@
 
     <hr>
 
+<div sec:authorize="hasRole('MANAGER')">
     <p>
         <a th:href="@{/leaders}">leadership meeting</a>
         (only managers)
     </p>
+</div>
 
+<div sec:authorize="hasRole('ADMIN')">
     <p>
         <a th:href="@{/systems}">IT systems meeting</a>
         (only admins)
     </p>
-
     <hr>
+</div>
+
 
     <form action="#" th:action="@{/logout}" method="POST">
         <input type="submit" value="logout"/>
