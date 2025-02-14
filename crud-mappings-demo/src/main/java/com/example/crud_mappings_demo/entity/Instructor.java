@@ -6,14 +6,6 @@ import jakarta.persistence.*;
 @Table(name="instructor")
 public class Instructor {
 
-    // ** set up mapping to InstructorDetail entity
-
-    // create constructors
-
-    // generate getter/setter methods
-
-    // generate toString() method
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")

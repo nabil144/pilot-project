@@ -19,8 +19,16 @@ public class CrudMappingsDemoApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
 			//createInstructor(appDAO);
-			findInstructor(appDAO);
+			//findInstructor(appDAO);
+			deleteInstructor(appDAO);
 		};
+	}
+
+	private void deleteInstructor(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("deleting instructor with id "+theId);
+		appDAO.deleteInstructorById(theId);
+		System.out.println("deleted");
 	}
 
 	private void findInstructor(AppDAO appDAO) {
