@@ -37,8 +37,24 @@ public class CrudMappingsDemoApplication {
 			//retrieveCourseAndReviews(appDAO);
 			//deleteCourseAndReviews(appDAO);
 
-			createCourseAndStudents(appDAO);
+			//createCourseAndStudents(appDAO);
+			//findCourseAndStudents(appDAO);
+			findStudentAndCourses(appDAO);
 		};
+	}
+
+	private void findStudentAndCourses(AppDAO appDAO) {
+		int theId = 4;
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+		System.out.println("student "+tempStudent);
+		System.out.println("courses "+tempStudent.getCourses());
+	}
+
+	private void findCourseAndStudents(AppDAO appDAO) {
+		int theId = 5;
+		Course tempCourse = appDAO.findCourseAndStudentsByCourseId(theId);
+		System.out.println("courses "+tempCourse);
+		System.out.println("students"+tempCourse.getStudents());
 	}
 
 	private void createCourseAndStudents(AppDAO appDAO) {
