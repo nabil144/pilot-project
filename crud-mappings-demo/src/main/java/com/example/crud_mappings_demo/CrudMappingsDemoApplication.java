@@ -1,12 +1,15 @@
 package com.example.crud_mappings_demo;
 
 import com.example.crud_mappings_demo.dao.AppDAO;
+import com.example.crud_mappings_demo.entity.Course;
 import com.example.crud_mappings_demo.entity.Instructor;
 import com.example.crud_mappings_demo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 @SpringBootApplication
 public class CrudMappingsDemoApplication {
@@ -21,8 +24,75 @@ public class CrudMappingsDemoApplication {
 			//createInstructor(appDAO);
 			//findInstructor(appDAO);
 			//deleteInstructor(appDAO);
-			findInstructorDetail(appDAO);
+			//findInstructorDetail(appDAO);
+			//deleteInstructorDetail(appDAO);
+			//createInstructorWithCourses(appDAO);
+			//findInstructorWithCourses(appDAO);
+			//findCoursesForInstructor(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int theId = 5;
+		System.out.println("finding instructor id "+theId);
+		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+		System.out.println("temp "+tempInstructor);
+		System.out.println("courses "+tempInstructor.getCourses());
+	}
+
+	private void findCoursesForInstructor(AppDAO appDAO) {
+		int theId = 5;
+		System.out.println("finding instructor id "+theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("temp "+tempInstructor);
+		//finding courses
+		System.out.println("finding courses for id"+theId);
+		List<Course> courses = appDAO.findCoursesByInstructorId(theId);
+		tempInstructor.setCourses(courses);
+		System.out.println("associated courses "+tempInstructor.getCourses());
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		int theId = 5;
+		System.out.println("finding instructor id "+theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("temp "+tempInstructor);
+		System.out.println("courses "+tempInstructor.getCourses());
+		System.out.println("done");
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		//		// create the instructor
+		Instructor tempInstructor =
+				new Instructor("Susan", "Public", "susan@luv2code.com");
+
+		// create the instructor detail
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail(
+						"http://www.youtube.com",
+						"video games");
+
+		// associate the objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		//create courses
+		Course tempCourse1 = new Course("air guitar guide");
+		Course tempCourse2 = new Course("pinball class");
+
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+
+		System.out.println("saving instructor "+tempInstructor);
+		System.out.println("saving courses "+tempInstructor.getCourses());
+		appDAO.save(tempInstructor);
+	}
+
+	private void deleteInstructorDetail(AppDAO appDAO) {
+		int theId = 3;
+		System.out.println("deleting instructor with id "+theId);
+		appDAO.deleteInstructorDetailById(theId);
+		System.out.println("deleted");
 	}
 
 	private void findInstructorDetail(AppDAO appDAO) {
@@ -78,10 +148,6 @@ public class CrudMappingsDemoApplication {
 		tempInstructor.setInstructorDetail(tempInstructorDetail);
 
 		// save the instructor
-		//
-		// NOTE: this will ALSO save the details object
-		// because of CascadeType.ALL
-		//
 		System.out.println("Saving instructor: " + tempInstructor);
 		appDAO.save(tempInstructor);
 
