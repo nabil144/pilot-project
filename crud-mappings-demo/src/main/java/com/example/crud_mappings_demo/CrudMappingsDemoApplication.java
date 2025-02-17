@@ -1,10 +1,7 @@
 package com.example.crud_mappings_demo;
 
 import com.example.crud_mappings_demo.dao.AppDAO;
-import com.example.crud_mappings_demo.entity.Course;
-import com.example.crud_mappings_demo.entity.Instructor;
-import com.example.crud_mappings_demo.entity.InstructorDetail;
-import com.example.crud_mappings_demo.entity.Review;
+import com.example.crud_mappings_demo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -38,8 +35,26 @@ public class CrudMappingsDemoApplication {
 
 			//createCourseAndReview(appDAO);
 			//retrieveCourseAndReviews(appDAO);
-			deleteCourseAndReviews(appDAO);
+			//deleteCourseAndReviews(appDAO);
+
+			createCourseAndStudents(appDAO);
 		};
+	}
+
+	private void createCourseAndStudents(AppDAO appDAO) {
+		//create course
+		Course tempCourse = new Course("pacman");
+		//create students
+		Student tempStudent1 = new Student("john","doe","john@luv2code.com");
+		Student tempStudent2 = new Student("mary","public","mary@luv2code.com");
+		//add students to course
+		tempCourse.addStudent(tempStudent1);
+		tempCourse.addStudent(tempStudent2);
+		//save course and students
+		System.out.println("saving course"+tempCourse);
+		System.out.println("with students"+tempCourse.getStudents());
+		appDAO.save(tempCourse);
+		System.out.println("done");
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
