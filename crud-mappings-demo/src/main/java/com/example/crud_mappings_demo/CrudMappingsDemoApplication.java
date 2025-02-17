@@ -37,8 +37,16 @@ public class CrudMappingsDemoApplication {
 			//deleteCourse(appDAO);
 
 			//createCourseAndReview(appDAO);
-			retrieveCourseAndReviews(appDAO);
+			//retrieveCourseAndReviews(appDAO);
+			deleteCourseAndReviews(appDAO);
 		};
+	}
+
+	private void deleteCourseAndReviews(AppDAO appDAO) {
+		int theId = 3;
+		System.out.println("deleting course with id "+ theId);
+		appDAO.deleteCourseById(theId);
+		System.out.println("done");
 	}
 
 	private void retrieveCourseAndReviews(AppDAO appDAO) {
