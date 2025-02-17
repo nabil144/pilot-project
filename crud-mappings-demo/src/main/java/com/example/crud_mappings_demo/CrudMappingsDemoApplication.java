@@ -4,6 +4,7 @@ import com.example.crud_mappings_demo.dao.AppDAO;
 import com.example.crud_mappings_demo.entity.Course;
 import com.example.crud_mappings_demo.entity.Instructor;
 import com.example.crud_mappings_demo.entity.InstructorDetail;
+import com.example.crud_mappings_demo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,8 +34,19 @@ public class CrudMappingsDemoApplication {
 			//updateInstructor(appDAO);
 			//updateCourse(appDAO);
 			//deleteInstructor(appDAO);
-			deleteCourse(appDAO);
+			//deleteCourse(appDAO);
+			createCourseAndReview(appDAO);
 		};
+	}
+
+	private void createCourseAndReview(AppDAO appDAO) {
+		Course tempCourse = new Course("pacman");
+		tempCourse.addReview(new Review("great course"));
+		tempCourse.addReview(new Review("good"));
+		tempCourse.addReview(new Review("really bad course"));
+		appDAO.save(tempCourse);
+		System.out.println("saved course "+tempCourse);
+		System.out.println(tempCourse.getReviews());
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
