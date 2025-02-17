@@ -39,8 +39,21 @@ public class CrudMappingsDemoApplication {
 
 			//createCourseAndStudents(appDAO);
 			//findCourseAndStudents(appDAO);
-			findStudentAndCourses(appDAO);
+			//findStudentAndCourses(appDAO);
+			addMoreCoursesForStudent(appDAO);
 		};
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		int theId = 3;
+		Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+		Course tempCourse1 = new Course("rubiks cube");
+		Course tempCourse2 = new Course("atari game dev");
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+		System.out.println("updating student "+tempStudent);
+		System.out.println("associated courses "+tempStudent.getCourses());
+		appDAO.update(tempStudent);
 	}
 
 	private void findStudentAndCourses(AppDAO appDAO) {
