@@ -29,8 +29,39 @@ public class CrudMappingsDemoApplication {
 			//createInstructorWithCourses(appDAO);
 			//findInstructorWithCourses(appDAO);
 			//findCoursesForInstructor(appDAO);
-			findInstructorWithCoursesJoinFetch(appDAO);
+			//findInstructorWithCoursesJoinFetch(appDAO);
+			//updateInstructor(appDAO);
+			//updateCourse(appDAO);
+			//deleteInstructor(appDAO);
+			deleteCourse(appDAO);
 		};
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("deleting course with id "+theId);
+		appDAO.deleteCourseById(theId);
+		System.out.println("done");
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("finding course id "+theId);
+		Course tempCourse = appDAO.findCourseById(theId);
+		System.out.println("updating course");
+		tempCourse.setTitle("new course name");
+		appDAO.update(tempCourse);
+		System.out.println("done");
+	}
+
+	private void updateInstructor(AppDAO appDAO) {
+		int theId = 3;
+		System.out.println("finding instructor id "+theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("updating");
+		tempInstructor.setLastName("tester");
+		appDAO.update(tempInstructor);
+		System.out.println("done");
 	}
 
 	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
@@ -106,7 +137,7 @@ public class CrudMappingsDemoApplication {
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {
-		int theId = 1;
+		int theId = 5;
 		System.out.println("deleting instructor with id "+theId);
 		appDAO.deleteInstructorById(theId);
 		System.out.println("deleted");
