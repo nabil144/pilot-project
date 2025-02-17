@@ -40,8 +40,17 @@ public class CrudMappingsDemoApplication {
 			//createCourseAndStudents(appDAO);
 			//findCourseAndStudents(appDAO);
 			//findStudentAndCourses(appDAO);
-			addMoreCoursesForStudent(appDAO);
+			//addMoreCoursesForStudent(appDAO);
+			//deleteCourse(appDAO);
+			deleteStudent(appDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+		int theId = 3;
+		System.out.println("deleting student id "+theId);
+		appDAO.deleteStudentById(theId);
+		System.out.println("done");
 	}
 
 	private void addMoreCoursesForStudent(AppDAO appDAO) {
@@ -111,7 +120,7 @@ public class CrudMappingsDemoApplication {
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
-		int theId = 1;
+		int theId = 7;
 		System.out.println("deleting course with id "+theId);
 		appDAO.deleteCourseById(theId);
 		System.out.println("done");
