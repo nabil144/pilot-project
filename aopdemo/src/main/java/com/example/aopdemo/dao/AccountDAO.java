@@ -2,7 +2,11 @@ package com.example.aopdemo.dao;
 
 import com.example.aopdemo.Account;
 
+import java.util.List;
+
 public interface AccountDAO {
+
+    List<Account> findAccounts();
 
     void addAccount(Account account, boolean vipFlag);
 
