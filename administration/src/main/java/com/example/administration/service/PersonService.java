@@ -2,6 +2,8 @@ package com.example.administration.service;
 
 import com.example.administration.entity.Person;
 
+import java.util.Optional;
+
 public interface PersonService {
 
     Person savePerson(Person newPerson);
@@ -10,6 +12,6 @@ public interface PersonService {
 
     void deletePersonById(int id);
 
-    Person findPersonByName(String name);
+    Optional<Person> findPersonByName(String name);
 
 }

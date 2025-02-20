@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -34,11 +35,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person findPersonByName(String name) {
+    public Optional<Person> findPersonByName(String name) {
         List<Person> people = personRepository.findByName(name);
         if(people.isEmpty()){
-            return null;
+            return Optional.empty();
         }
-        return people.get(0);
+        return Optional.of(people.get(0));
     }
 }
