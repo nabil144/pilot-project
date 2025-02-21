@@ -1,9 +1,13 @@
 package com.example.bookingapp.service;
 
+import com.example.administration.dto.CustomResponseDTO;
+import com.example.administration.entity.Person;
 import com.example.bookingapp.entity.Booking;
 import com.example.bookingapp.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -11,15 +15,25 @@ import java.util.List;
 public class BookingServiceImpl implements BookingService{
 
     private BookingRepository bookingRepository;
+    private RestTemplate restTemplate;
 
     @Autowired
-    public BookingServiceImpl(BookingRepository theBookingRepository){
+    public BookingServiceImpl(BookingRepository theBookingRepository, RestTemplate theRestTemplate){
         bookingRepository = theBookingRepository;
+        restTemplate = theRestTemplate;
     }
 
     @Override
-    public Booking saveBooking(Booking newBooking) {
-        return bookingRepository.save(newBooking);
+    public CustomResponseDTO<Booking> saveBooking(Booking newBooking) {
+
+        String url = "http://localhost:8081/api/v1/people/person/" + newBooking.getPerson();
+        CustomResponseDTO<Person> customResponseDTO = restTemplate.getForObject(url, CustomResponseDTO.class);
+
+        if(customResponseDTO.getCode()==0){
+            Booking dbBooking = bookingRepository.save(newBooking);
+            return new CustomResponseDTO<>(0,"successfully created booking", dbBooking);
+        }
+        return new CustomResponseDTO<>(1, "failed to create booking", null);
     }
 
     @Override

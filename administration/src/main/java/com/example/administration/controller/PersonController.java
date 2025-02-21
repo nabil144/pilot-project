@@ -1,9 +1,9 @@
 package com.example.administration.controller;
 
+import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
 import com.example.administration.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +26,22 @@ public class PersonController {
     }
 
     @GetMapping("/person/{name}")
-    public ResponseEntity<Person> findPerson(@PathVariable String name) {
-        Optional<Person> personByName = personService.findPersonByName(name);
-        personByName.ifPresent(ResponseEntity::ok);
+    public ResponseEntity<CustomResponseDTO<Person>> findPerson(@PathVariable String name) {
+        Optional<Person> person = personService.findPersonByName(name);
 
-        return ResponseEntity.notFound().build();
+        ResponseEntity<CustomResponseDTO<Person>> response;
+        CustomResponseDTO<Person> customResponseDTO = new CustomResponseDTO();
+
+        if(person.isPresent()){
+            customResponseDTO.setCode(0);
+            customResponseDTO.setMessage("person is a member");
+            customResponseDTO.setData(person.get());
+            return ResponseEntity.ok(customResponseDTO);
+        }
+        customResponseDTO.setCode(1);
+        customResponseDTO.setMessage("person is not a member");
+        customResponseDTO.setData(null);
+        return ResponseEntity.ok(customResponseDTO);
     }
 
 }

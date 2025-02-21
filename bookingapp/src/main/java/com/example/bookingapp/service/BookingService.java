@@ -1,12 +1,14 @@
 package com.example.bookingapp.service;
 
+import com.example.administration.dto.CustomResponseDTO;
+import com.example.administration.entity.Person;
 import com.example.bookingapp.entity.Booking;
 
 import java.util.List;
 
 public interface BookingService {
 
-    Booking saveBooking(Booking newBooking);
+    CustomResponseDTO<Booking> saveBooking(Booking newBooking);
 
     List<Booking> getBookings();
 
