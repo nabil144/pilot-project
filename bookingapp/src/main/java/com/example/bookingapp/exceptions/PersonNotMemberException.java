@@ -1,4 +1,4 @@
-package com.example.administration.exceptions;
+package com.example.bookingapp.exceptions;
 
 public class PersonNotMemberException extends RuntimeException{
 

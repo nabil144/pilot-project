@@ -2,6 +2,7 @@ package com.example.administration.service;
 
 
 import com.example.administration.entity.Person;
+import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.administration.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,15 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person updatePerson(Person person, int id) {
-        return null;
-    }
+    public Person updatePerson(Person person, int personId) {
+        Person dbPerson = personRepository.findById(personId).get();
+        if(person.getName()!=null && !person.getName().isEmpty()){
+            dbPerson.setName(person.getName());
+        }
+        if(person.getMembership()!=null && !person.getMembership().isEmpty()){
+            dbPerson.setMembership(person.getMembership());
+        }
+        return personRepository.save(dbPerson);    }
 
     @Override
     public void deletePersonById(int id) {
@@ -38,7 +45,7 @@ public class PersonServiceImpl implements PersonService {
     public Optional<Person> findPersonByName(String name) {
         List<Person> people = personRepository.findByName(name);
         if(people.isEmpty()){
-            return Optional.empty();
+            throw new PersonNotMemberException(name);
         }
         return Optional.of(people.get(0));
     }

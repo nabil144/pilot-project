@@ -1,4 +1,4 @@
-package com.example.administration.exceptions;
+package com.example.bookingapp.exceptions;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;

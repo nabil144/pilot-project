@@ -13,7 +13,6 @@ public class BookingappApplication {
 		SpringApplication.run(BookingappApplication.class, args);
 	}
 
-
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();

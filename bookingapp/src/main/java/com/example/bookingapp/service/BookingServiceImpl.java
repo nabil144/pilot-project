@@ -27,13 +27,17 @@ public class BookingServiceImpl implements BookingService{
     public CustomResponseDTO<Booking> saveBooking(Booking newBooking) {
 
         String url = "http://localhost:8081/api/v1/people/person/" + newBooking.getPerson();
-        CustomResponseDTO<Person> customResponseDTO = restTemplate.getForObject(url, CustomResponseDTO.class);
-
-        if(customResponseDTO.getCode()==0){
-            Booking dbBooking = bookingRepository.save(newBooking);
-            return new CustomResponseDTO<>(0,"successfully created booking", dbBooking);
+        try {
+            CustomResponseDTO<Person> customResponseDTO = restTemplate.getForObject(url, CustomResponseDTO.class);
+            if(customResponseDTO.getCode()==0){
+                Booking dbBooking = bookingRepository.save(newBooking);
+                return new CustomResponseDTO<>(0,"successfully created booking", dbBooking);
+            }
+            return new CustomResponseDTO<>(1, "failed to create booking", null);
+        }catch(Exception e){
+            throw e;
         }
-        return new CustomResponseDTO<>(1, "failed to create booking", null);
+
     }
 
     @Override
