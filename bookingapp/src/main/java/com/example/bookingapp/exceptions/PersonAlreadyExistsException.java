@@ -1,16 +1,21 @@
-package com.example.bookingapp.exceptions;
+package com.example.administration.exceptions;
 
 public class PersonAlreadyExistsException extends RuntimeException {
-    private String message;
+
+    private String personName;
 
     public PersonAlreadyExistsException(){}
 
-    public PersonAlreadyExistsException(String message) {
-        super(message);
-        this.message = message;
+    public PersonAlreadyExistsException(String personName) {
+        super("person " + personName + " already exists as a member");
+        this.personName = personName;
     }
 
-    public PersonAlreadyExistsException(String message, Throwable cause){
-        super(message,cause);
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 }

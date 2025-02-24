@@ -2,6 +2,7 @@ package com.example.administration.service;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
+import com.example.administration.exceptions.PersonAlreadyExistsException;
 import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.administration.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,18 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person savePerson(Person newPerson) {
-        return personRepository.save(newPerson);
+        try{
+            CustomResponseDTO customResponseDTO = findPersonByName(newPerson.getName());
+            if(customResponseDTO.getCode()==0){
+                throw new PersonAlreadyExistsException(newPerson.getName());
+            }else{
+                return personRepository.save(newPerson);
+            }
+        }catch(PersonNotMemberException e){
+            return personRepository.save(newPerson);
+        }catch(Exception e){
+            throw e;
+        }
     }
 
     @Override

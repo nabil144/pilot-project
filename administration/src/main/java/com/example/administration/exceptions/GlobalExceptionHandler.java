@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PersonAlreadyExistsException.class)
-    public ResponseEntity<CustomResponseDTO<Person>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex){
-        CustomResponseDTO<Person> response = new CustomResponseDTO<>(1, "this person cannot be created because it already exists", null);
+    public ResponseEntity<CustomResponseDTO<String>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex){
+        CustomResponseDTO<String> response = new CustomResponseDTO<>(1, ex.getMessage(), ex.getPersonName());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 

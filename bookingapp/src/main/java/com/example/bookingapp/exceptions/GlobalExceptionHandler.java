@@ -1,8 +1,8 @@
 package com.example.bookingapp.exceptions;
 
 import com.example.administration.dto.CustomResponseDTO;
+import com.example.administration.exceptions.PersonAlreadyExistsException;
 import com.example.administration.exceptions.PersonNotMemberException;
-import com.example.administration.entity.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PersonAlreadyExistsException.class)
-    public ResponseEntity<CustomResponseDTO<Person>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex){
-        CustomResponseDTO<Person> response = new CustomResponseDTO<>(1, "this person cannot be created because it already exists", null);
+    public ResponseEntity<CustomResponseDTO<String>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex){
+        CustomResponseDTO<String> response = new CustomResponseDTO<>(1, ex.getMessage(), ex.getPersonName());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
