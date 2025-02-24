@@ -2,10 +2,12 @@ package com.example.bookingapp.service;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
+import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.bookingapp.entity.Booking;
 import com.example.bookingapp.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -32,11 +34,14 @@ public class BookingServiceImpl implements BookingService{
                 Booking dbBooking = bookingRepository.save(newBooking);
                 return new CustomResponseDTO<>(0,"successfully created booking", dbBooking);
             }
-            return new CustomResponseDTO<>(1, "failed to create booking", null);
+        }catch(HttpClientErrorException e){
+            CustomResponseDTO<String> customResponseDTO = e.getResponseBodyAs(CustomResponseDTO.class);
+            PersonNotMemberException ex = new PersonNotMemberException(customResponseDTO.getData());
+            throw ex;
         }catch(Exception e){
             throw e;
         }
-
+        return new CustomResponseDTO<>(1, "failed to create booking", null);
     }
 
     @Override

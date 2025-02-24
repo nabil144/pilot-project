@@ -1,6 +1,7 @@
 package com.example.bookingapp.exceptions;
 
 import com.example.administration.dto.CustomResponseDTO;
+import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.administration.entity.Person;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CustomResponseDTO<String>> handleGenericException(Exception ex){
         CustomResponseDTO<String> response = new CustomResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), null);
+        System.out.println(ex.getClass());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

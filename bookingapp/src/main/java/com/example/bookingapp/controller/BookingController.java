@@ -34,7 +34,6 @@ public class BookingController {
         if(customResponseDTO.getCode()==0){
             return new ResponseEntity<>(customResponseDTO, HttpStatus.CREATED);
         }
-        System.out.println("Person not found.");
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(customResponseDTO);
     }
 
