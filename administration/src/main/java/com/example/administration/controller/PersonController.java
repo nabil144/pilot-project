@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/v1/people")
 public class PersonController {
@@ -27,20 +25,7 @@ public class PersonController {
 
     @GetMapping("/person/{name}")
     public ResponseEntity<CustomResponseDTO<Person>> findPerson(@PathVariable String name) {
-        Optional<Person> person = personService.findPersonByName(name);
-
-        ResponseEntity<CustomResponseDTO<Person>> response;
-        CustomResponseDTO<Person> customResponseDTO = new CustomResponseDTO();
-
-        if(person.isPresent()){
-            customResponseDTO.setCode(0);
-            customResponseDTO.setMessage("person is a member");
-            customResponseDTO.setData(person.get());
-            return ResponseEntity.ok(customResponseDTO);
-        }
-        customResponseDTO.setCode(1);
-        customResponseDTO.setMessage("person is not a member");
-        customResponseDTO.setData(null);
+        CustomResponseDTO<Person> customResponseDTO = personService.findPersonByName(name);
         return ResponseEntity.ok(customResponseDTO);
     }
 

@@ -1,16 +1,12 @@
 package com.example.bookingapp.controller;
 
 import com.example.administration.dto.CustomResponseDTO;
-import com.example.administration.entity.Person;
-import com.example.administration.exceptions.PersonAlreadyExistsException;
-import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.bookingapp.entity.Booking;
 import com.example.bookingapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 

@@ -1,8 +1,7 @@
 package com.example.administration.service;
 
+import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
-
-import java.util.Optional;
 
 public interface PersonService {
 
@@ -12,6 +11,6 @@ public interface PersonService {
 
     void deletePersonById(int id);
 
-    Optional<Person> findPersonByName(String name);
+    CustomResponseDTO<Person> findPersonByName(String name);
 
 }

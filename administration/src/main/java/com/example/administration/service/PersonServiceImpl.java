@@ -1,6 +1,6 @@
 package com.example.administration.service;
 
-
+import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
 import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.administration.repository.PersonRepository;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -42,11 +41,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Optional<Person> findPersonByName(String name) {
+    public CustomResponseDTO<Person> findPersonByName(String name) {
         List<Person> people = personRepository.findByName(name);
         if(people.isEmpty()){
             throw new PersonNotMemberException(name);
         }
-        return Optional.of(people.get(0));
+        CustomResponseDTO<Person> customResponseDTO = new CustomResponseDTO<>(0,"person is a member", people.get(0));
+        return customResponseDTO;
     }
 }

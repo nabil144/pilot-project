@@ -5,7 +5,6 @@ import com.example.administration.entity.Person;
 import com.example.bookingapp.entity.Booking;
 import com.example.bookingapp.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
