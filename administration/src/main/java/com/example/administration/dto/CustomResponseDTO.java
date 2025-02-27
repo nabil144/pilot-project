@@ -1,7 +1,9 @@
 package com.example.administration.dto;
 
+import com.example.administration.enums.ResponseCode;
+
 public class CustomResponseDTO<T> {
-    private int code;
+    private ResponseCode code;
     private String message;
     private T data;
 
@@ -9,17 +11,17 @@ public class CustomResponseDTO<T> {
 
     }
 
-    public CustomResponseDTO(int code, String message, T data) {
+    public CustomResponseDTO(ResponseCode code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public int getCode() {
+    public ResponseCode getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(ResponseCode code) {
         this.code = code;
     }
 

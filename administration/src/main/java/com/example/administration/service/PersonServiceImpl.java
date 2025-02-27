@@ -2,6 +2,7 @@ package com.example.administration.service;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.entity.Person;
+import com.example.administration.enums.ResponseCode;
 import com.example.administration.exceptions.PersonAlreadyExistsException;
 import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.administration.repository.PersonRepository;
@@ -24,7 +25,7 @@ public class PersonServiceImpl implements PersonService {
     public Person savePerson(Person newPerson) {
         try{
             CustomResponseDTO customResponseDTO = findPersonByName(newPerson.getName());
-            if(customResponseDTO.getCode()==0){
+            if(customResponseDTO.getCode()== ResponseCode.OK){
                 throw new PersonAlreadyExistsException(newPerson.getName());
             }else{
                 return personRepository.save(newPerson);
@@ -58,7 +59,7 @@ public class PersonServiceImpl implements PersonService {
         if(people.isEmpty()){
             throw new PersonNotMemberException(name);
         }
-        CustomResponseDTO<Person> customResponseDTO = new CustomResponseDTO<>(0,"person is a member", people.get(0));
+        CustomResponseDTO<Person> customResponseDTO = new CustomResponseDTO<>(ResponseCode.OK,"person is a member", people.get(0));
         return customResponseDTO;
     }
 }
