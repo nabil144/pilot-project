@@ -1,15 +1,13 @@
-package com.example.bookingapp.exceptions;
+package com.example.administration.exceptions;
 
 import com.example.administration.dto.CustomResponseDTO;
-import com.example.administration.exceptions.PersonAlreadyExistsException;
-import com.example.administration.exceptions.PersonNotMemberException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class PersonExceptionHandler {
 
     @ExceptionHandler(PersonAlreadyExistsException.class)
     public ResponseEntity<CustomResponseDTO<String>> handlePersonAlreadyExistsException(PersonAlreadyExistsException ex){
@@ -29,7 +27,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CustomResponseDTO<String>> handleGenericException(Exception ex){
         CustomResponseDTO<String> response = new CustomResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), null);
-        System.out.println(ex.getClass());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -6,6 +6,8 @@ import com.example.administration.exceptions.PersonNotMemberException;
 import com.example.bookingapp.entity.Booking;
 import com.example.bookingapp.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -29,15 +31,13 @@ public class BookingServiceImpl implements BookingService{
 
         String url = "http://localhost:8081/api/v1/people/person/" + newBooking.getPerson();
         try {
-            CustomResponseDTO<Person> customResponseDTO = restTemplate.getForObject(url, CustomResponseDTO.class);
+            CustomResponseDTO<Object> customResponseDTO = restTemplate.getForObject(url, CustomResponseDTO.class);
             if(customResponseDTO.getCode()==0){
                 Booking dbBooking = bookingRepository.save(newBooking);
                 return new CustomResponseDTO<>(0,"successfully created booking", dbBooking);
             }
         }catch(HttpClientErrorException e){
-            CustomResponseDTO<String> customResponseDTO = e.getResponseBodyAs(CustomResponseDTO.class);
-            PersonNotMemberException ex = new PersonNotMemberException(customResponseDTO.getData());
-            throw ex;
+            throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED);
         }catch(Exception e){
             throw e;
         }
