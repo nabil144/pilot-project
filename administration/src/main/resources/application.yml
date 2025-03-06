@@ -1,9 +1,0 @@
-server:
-  port: 8081
-
-spring:
-  datasource:
-    url: jdbc:sqlserver://localhost:1433;database=booking_db;encrypt=false;user=sa;password=Password_123
-  jpa:
-    hibernate:
-      ddl-auto: update
