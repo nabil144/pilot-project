@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -7,7 +7,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
-service:
-  people:
-    url: http://localhost:8081/api/v1/people/person/

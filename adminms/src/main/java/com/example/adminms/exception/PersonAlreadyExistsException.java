@@ -1,4 +1,4 @@
-package com.example.administration.exceptions;
+package com.example.adminms.exception;
 
 public class PersonAlreadyExistsException extends RuntimeException {
 

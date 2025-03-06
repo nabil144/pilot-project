@@ -1,4 +1,4 @@
-package com.example.bookingapp.exceptions;
+package com.example.bookingapp.exception;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.enums.ResponseCode;

@@ -1,4 +1,4 @@
-package com.example.administration.exceptions;
+package com.example.administration.exception;
 
 public class PersonNotMemberException extends RuntimeException{
 

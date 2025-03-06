@@ -1,8 +1,8 @@
-package com.example.administration.controller;
+package com.example.adminms.controller;
 
-import com.example.administration.dto.CustomResponseDTO;
-import com.example.administration.entity.Person;
-import com.example.administration.service.PersonService;
+import com.example.adminms.dto.CustomResponseDTO;
+import com.example.adminms.entity.Person;
+import com.example.adminms.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

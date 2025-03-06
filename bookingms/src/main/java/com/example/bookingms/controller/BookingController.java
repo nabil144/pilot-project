@@ -1,10 +1,10 @@
-package com.example.bookingapp.controller;
+package com.example.bookingms.controller;
 
-import com.example.administration.dto.CustomResponseDTO;
-import com.example.administration.enums.ResponseCode;
-import com.example.bookingapp.entity.Booking;
-import com.example.bookingapp.exception.UnauthorizedException;
-import com.example.bookingapp.service.BookingService;
+import com.example.bookingms.dto.CustomResponseDTO;
+import com.example.bookingms.entity.Booking;
+import com.example.bookingms.enums.ResponseCode;
+import com.example.bookingms.exception.UnauthorizedException;
+import com.example.bookingms.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

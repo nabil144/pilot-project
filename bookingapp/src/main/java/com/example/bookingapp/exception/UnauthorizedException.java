@@ -1,4 +1,4 @@
-package com.example.bookingapp.exceptions;
+package com.example.bookingapp.exception;
 
 public class UnauthorizedException extends RuntimeException {
     public UnauthorizedException(String message) {

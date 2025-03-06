@@ -1,11 +1,11 @@
-package com.example.administration.service;
+package com.example.adminms.service;
 
-import com.example.administration.dto.CustomResponseDTO;
-import com.example.administration.entity.Person;
-import com.example.administration.enums.ResponseCode;
-import com.example.administration.exception.PersonAlreadyExistsException;
-import com.example.administration.exception.PersonNotMemberException;
-import com.example.administration.repository.PersonRepository;
+import com.example.adminms.dto.CustomResponseDTO;
+import com.example.adminms.entity.Person;
+import com.example.adminms.enums.ResponseCode;
+import com.example.adminms.exception.PersonAlreadyExistsException;
+import com.example.adminms.exception.PersonNotMemberException;
+import com.example.adminms.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

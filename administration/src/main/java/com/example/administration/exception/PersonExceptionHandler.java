@@ -1,4 +1,4 @@
-package com.example.administration.exceptions;
+package com.example.administration.exception;
 
 import com.example.administration.dto.CustomResponseDTO;
 import com.example.administration.enums.ResponseCode;
