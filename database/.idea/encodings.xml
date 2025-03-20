@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/dev-spring-boot/spring-boot-spring-mvc-thymleaf/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dev-spring-boot/validationdemo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/01-constractor-injection/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/02-component-scanning/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/03-setter-injection/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/04-qualifiers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/05-lazy-ini/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/06-Bean-lifecycle-method/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/07-Bean-Scopes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/08-java-config-bean/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/10-spring-boot-rest-security/00-spring-boot-rest-security-employee-starter-code/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/crud.demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-Jpa - Copy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-Jpa/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-rest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/cruddemo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/pilot-project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/spring-boot-rest-crud/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/spring-boot-spring-mvc-thymleaf/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-core/validationdemo/src/main/java" charset="UTF-8" />
+  </component>
+</project>

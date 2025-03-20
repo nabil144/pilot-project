@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/spring-core/cruddemo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/crud.demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/05-lazy-ini/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/04-qualifiers/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/pilot-project/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/07-Bean-Scopes/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/validationdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/03-setter-injection/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/08-java-config-bean/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/02-component-scanning/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/spring-boot-rest-crud/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/01-constractor-injection/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/06-Bean-lifecycle-method/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/10-spring-boot-rest-security/00-spring-boot-rest-security-employee-starter-code/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-Jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-rest/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/spring-boot-spring-mvc-thymleaf/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-core/cruddemo-with-Soring-data-Jpa - Copy/pom.xml" />
+        <option value="$PROJECT_DIR$/dev-spring-boot/validationdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/dev-spring-boot/spring-boot-spring-mvc-thymleaf/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

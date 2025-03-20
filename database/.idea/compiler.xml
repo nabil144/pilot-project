@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="crud.demo" />
+        <module name="validationdemo" />
+        <module name="springcoredemo" />
+        <module name="crud.demo (1)" />
+        <module name="cruddemo (1)" />
+        <module name="spring-boot-spring-mvc (1)" />
+        <module name="cruddemo (2)" />
+        <module name="cruddemo" />
+        <module name="springcoredemo (7)" />
+        <module name="springcoredemo (6)" />
+        <module name="cruddemo (3)" />
+        <module name="validationdemo (1)" />
+        <module name="springcoredemo (5)" />
+        <module name="cruddemo (4)" />
+        <module name="springcoredemo (4)" />
+        <module name="spring-boot-spring-mvc" />
+        <module name="springcoredemo (3)" />
+        <module name="springcoredemo (2)" />
+        <module name="springcoredemo (1)" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="crud.demo" options="-parameters" />
+      <module name="crud.demo (1)" options="-parameters" />
+      <module name="cruddemo" options="-parameters" />
+      <module name="cruddemo (1)" options="-parameters" />
+      <module name="cruddemo (2)" options="-parameters" />
+      <module name="cruddemo (3)" options="-parameters" />
+      <module name="cruddemo (4)" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="spring-boot-spring-mvc" options="-parameters" />
+      <module name="spring-boot-spring-mvc (1)" options="-parameters" />
+      <module name="springcoredemo" options="-parameters" />
+      <module name="springcoredemo (1)" options="-parameters" />
+      <module name="springcoredemo (2)" options="-parameters" />
+      <module name="springcoredemo (3)" options="-parameters" />
+      <module name="springcoredemo (4)" options="-parameters" />
+      <module name="springcoredemo (5)" options="-parameters" />
+      <module name="springcoredemo (6)" options="-parameters" />
+      <module name="springcoredemo (7)" options="-parameters" />
+      <module name="validationdemo" options="-parameters" />
+      <module name="validationdemo (1)" options="-parameters" />
+    </option>
+  </component>
+</project>
