@@ -12,6 +12,7 @@ import com.example.walletExercicedemo.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,10 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Value("${app.maxBalanceLimit}")
+    private BigDecimal maxBalanceLimit;
+
+
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -35,6 +40,15 @@ public class UserService {
     // Initiate the transaction between users
     public TransactionResponse transferMoney(Long senderId, Long receiverId, BigDecimal amount) {
         logger.info("Initiating transfer from user {} to user {} with amount {}", senderId, receiverId, amount);
+
+
+        // Validate the amount
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            logger.error("Invalid transaction amount: {}. Amount must be greater than zero.", amount);
+
+            throw new IllegalArgumentException("Transaction amount must be greater than zero.");
+
+        }
 
         // Fetch sender
         User sender = getUserById(senderId);
@@ -88,6 +102,11 @@ public class UserService {
 
             logger.info("Transaction details retrieved successfully: {}", transactionResponseRetrieve);
 
+            //check if userId is the receiver
+            if (!userId.equals(transactionResponseRetrieve.getReceiverId())){
+                logger.warn("User with ID {} is not the receiver. Only the receiver can approve the transaction." ,userId);
+                return  "Only the receiver can approve this transaction.";
+            }
 
             // Retrieve sender and receiver users
             User sender = getUserById(transactionResponseRetrieve.getSenderId());
@@ -128,23 +147,21 @@ public class UserService {
                 logger.info("Re-checking sender's balance before approval in case balance has changed since transaction initiation.");
 
                 if (sender.getWalletBalance().compareTo(amount) < 0) {
+                    logger.warn("Insufficient balance for sender with ID {}. Available balance: {}, Required: {}",
+                            sender.getId(), sender.getWalletBalance(), amount);
                     throw new InsufficientBalanceException("Sender with ID " + sender.getId() + " has insufficient balance.");
                 }
 
                 // Step 3: Calculate the new balance for the receiver and check the max balance limit
-
                 BigDecimal newReceiverBalance = receiver.getWalletBalance().add(amount);
-                BigDecimal maxBalanceLimit = new BigDecimal("300");
-
                 if (newReceiverBalance.compareTo(maxBalanceLimit) > 0) {
 
                     // Step 1: Update the transaction status to "FAILED" because the balance will exceed the limit
                     String statusUpdateResponseFalse = callTransactionServiceUpdate(transactionId, false);  // false indicates rejection
                     logger.info("Transaction status updated to 'FAILED' due to balance exceeding limit: {}", statusUpdateResponseFalse);
 
-                    // Step 2: Throw an exception with a detailed error message
-                    String errorMessage = String.format("Transaction failed: Receiver's wallet balance cannot exceed %s. Receiver's new balance would be %s.", maxBalanceLimit, newReceiverBalance);
-                    throw new RuntimeException(errorMessage);
+                    throw new BalanceExceedsLimitException(String.format("Transaction failed: Receiver's wallet balance cannot exceed %s. Receiver's new balance would be %s.",
+                            maxBalanceLimit, newReceiverBalance));
                 }
 
                 // Step 4: Log before updating balances

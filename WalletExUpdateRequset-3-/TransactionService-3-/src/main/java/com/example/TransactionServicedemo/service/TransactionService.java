@@ -43,7 +43,6 @@ public class TransactionService {
         transaction.setTimestamp(new Timestamp(System.currentTimeMillis()));
         transaction.setStatus("PENDING");
 
-
          transactionRepository.save(transaction);
 
          var response = new TransactionResponseDto();

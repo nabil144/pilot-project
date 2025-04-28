@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: TransactionServicedemo
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;database=TransactionServiceDB;encrypt=false;user=sa;password=P@ssw0rd
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: none  # Keep 'none' if managing schema manually
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+    open-in-view: true
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: trace
+        orm:
+          jdbc:
+            bind: trace
+
+server:
+  port: 8081
+
+# UserService URL for calling from TransactionService
+user:
+  service:
+    url: http://localhost:8080/users
+
+# Swagger configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs  # Path for the API docs
+  swagger-ui:
+    path: /swagger-ui.html  # Swagger UI path
+    enabled: true  # Ensure Swagger UI is enabled
+
+# Optional maxBalanceLimit configuration
+maxBalanceLimit: 300
